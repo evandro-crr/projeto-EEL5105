@@ -7,7 +7,7 @@ port (	user: in std_logic;
 			FIRE: in std_logic;
 			MATCH: out std_logic
 			);
-end entity;
+end TOPO_COMPARADOR;
 
 architecture top_comp of TOPO_COMPARADOR is
 	

@@ -9,9 +9,10 @@ port (	clock: in std_logic;
 			MATCH: in std_logic;
 			
 			LEDR: out std_logic_vector(7 downto 0);
-			LEDG: out std_logic_vector(7 downto 0)
+			LEDG: out std_logic_vector(7 downto 0);
+			GAMEEND: out std_logic
 			);
-end entity;
+end CONTADOR;
 
 architecture cont of CONTADOR is
 	signal cont1, cont2: std_logic_vector(3 downto 0);
@@ -19,12 +20,16 @@ begin
 	process (RST)
 	begin
 		if RST = '1' then	cont1 <= "0000";
-									cont2 <= "0000";
+								cont2 <= "0000";
 		end if;
 	end process;
 
 	process(clock)
-	begin 
+	begin
+		
+		if cont1 = "1000" then GAMEEND <= '1'; end if;
+		if cont2 = "1000" then GAMEEND <= '1'; end if;
+		
 		case user is
 			when '0' => if MATCH = '1' then cont1 <= cont1 + '1'; end if;
 			when '1' => if MATCH = '1' then cont2 <= cont2 + '1'; end if;
