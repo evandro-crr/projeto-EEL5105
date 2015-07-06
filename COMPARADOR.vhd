@@ -1,5 +1,5 @@
 library IEEE;	
-	use IEEE.std_logic_1164.all;
+use IEEE.std_logic_1164.all;
 	
 entity COMPARADOR is 
 port (	SW: in std_logic_vector(13 downto 0);

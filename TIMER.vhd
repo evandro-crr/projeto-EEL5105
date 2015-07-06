@@ -53,7 +53,7 @@ D3: DECOD7 port map(cont20 / 10, CLOCK50, set201);
 D4: DECOD7 port map(cont20 mod 10, CLOCK50, set200);
 D5: DECOD7 port map(cont10 / 10, CLOCK50, set101);
 D6: DECOD7 port map(cont10 mod 10, CLOCK50, set100);
-set51 <= "000000"
+set51 <= "000000";
 D7: DECOD7 port map(cont5, CLOCK50, set50);
 
 process (clock1Hz)
