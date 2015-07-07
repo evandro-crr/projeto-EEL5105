@@ -17,23 +17,21 @@ end CONTADOR;
 architecture cont of CONTADOR is
 	signal cont1, cont2: std_logic_vector(3 downto 0);
 begin
-	process (RST)
+
+	process(clock, RST)
 	begin
 		if RST = '1' then	cont1 <= "0000";
 								cont2 <= "0000";
-		end if;
-	end process;
-
-	process(clock)
-	begin
-		if rising_edge(clock) then
-			if cont1 = "1000" then GAMEEND <= '1'; end if;
-			if cont2 = "1000" then GAMEEND <= '1'; end if;
-			
-			case user is
-				when '0' => if MATCH = '1' then cont1 <= cont1 + '1'; end if;
-				when '1' => if MATCH = '1' then cont2 <= cont2 + '1'; end if;
-			end case;
+		else	
+			if rising_edge(clock) then
+				if cont1 = "1000" then GAMEEND <= '1'; end if;
+				if cont2 = "1000" then GAMEEND <= '1'; end if;
+				
+				case user is
+					when '0' => if MATCH = '1' then cont1 <= cont1 + '1'; end if;
+					when '1' => if MATCH = '1' then cont2 <= cont2 + '1'; end if;
+				end case;
+			end if;
 		end if;
 	end process;
 	

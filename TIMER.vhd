@@ -53,12 +53,15 @@ D3: DECOD7 port map(cont20 / 10, CLOCK50, set201);
 D4: DECOD7 port map(cont20 mod 10, CLOCK50, set200);
 D5: DECOD7 port map(cont10 / 10, CLOCK50, set101);
 D6: DECOD7 port map(cont10 mod 10, CLOCK50, set100);
-set51 <= "000000";
+set51 <= "0000000";
 D7: DECOD7 port map(cont5, CLOCK50, set50);
 
-process (clock1Hz)
+process (clock1Hz, RSTT)
 	begin
 	
+	if RSTT = '1' then	cont5 <= 5; cont10 <= 10;
+								cont20 <= 20; cont30 <= 30;
+	else
 	if cont5 = 0 then s5 <= '1'; cont5 <= 5;
 	else s5 <= '0'; cont5 <= cont5 - 1; end if;
 	
@@ -71,17 +74,9 @@ process (clock1Hz)
 	if cont30 = 0 then s30 <= '1'; cont30 <= 30;
 	else s30 <= '0'; cont30 <= cont30 - 1; end if;
 	
-end process;
-
-process (RSTT)
-	begin 
-	
-	if RSTT = '1' then cont5 <= 5; cont10 <= 10;
-							cont20 <= 20; cont30 <= 30;
 	end if;
 	
 end process;
-
 
 seteseg0 <= set50 when SEL = "11" else
 				set100 when SEL = "10" else

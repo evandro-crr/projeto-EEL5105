@@ -22,15 +22,12 @@ signal EA, PS: STATES;
 
 begin
 
-process (RST, GAMEEND)
+process (CLOCK50, RST, GAMEEND)
 begin
-	if RST = '1' then PS <= s0; end if;
-	if GAMEEND = '1' then PS <= s0; end if;
-end process;
-
-process (CLOCK50)
-begin
-	if rising_edge(CLOCK50) then
+	
+	if RST = '1' then PS <= s0;
+	elsif GAMEEND = '1' then PS <= s0;	
+	elsif rising_edge(CLOCK50) then
 		case EA is
 			when s0 => 	if INIT = '0' then PS <= s1; end if;
 			when s1 => 	if FIREIN = '0' then PS <= s2;
