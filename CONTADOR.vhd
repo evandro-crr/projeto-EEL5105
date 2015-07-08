@@ -22,9 +22,8 @@ begin
 	begin
 		if RST = '1' then	cont1 <= "0000";
 								cont2 <= "0000";
-								GAMEEND <= '0';
 		else	
-			if clock'event and clock = '1' then
+			if rising_edge(clock) then
 				if cont1 = "1000" then GAMEEND <= '1'; end if;
 				if cont2 = "1000" then GAMEEND <= '1'; end if;
 				
@@ -38,7 +37,7 @@ begin
 	
 	process (clock, cont1, cont2)
 	begin
-		if clock'event and clock = '1' then
+		if rising_edge(clock) then
 			case cont1 is
 				when "0000" => LEDG <= "00000000";
 				when "0001" => LEDG <= "00000001";
