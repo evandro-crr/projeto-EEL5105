@@ -3,15 +3,8 @@ use IEEE.std_logic_1164.all;
 
 entity batalhaNaval is
 port (	SW: in std_logic_vector (17 downto 0);
-<<<<<<< HEAD
 			KEY: in std_ulogic_vector (3 downto 0);
 			CLOCK_50: in std_logic;
-=======
-			KEY3: in std_logic;
-			KEY2: in std_logic;
-			KEY0: in std_logic;
-			CLOCK50: in std_logic;
->>>>>>> 5c9e406b51cd9aed3682791923e6c2c9e83bf53c
 			
 			LEDR: out std_logic_vector (7 downto 0);
 			LEDG: out std_logic_vector (7 downto 0);
@@ -78,15 +71,9 @@ end component;
 
 begin
 
-<<<<<<< HEAD
 F1: FSM port map (KEY(0), KEY(3), KEY(2), gameend, timeend, CLOCK_50, users, fire, rstc, rstt);
 T1: TIMER port map (CLOCK_50, SW(17 downto 16), rstt, timeend, HEX0, HEX1);
 C1: CONTADOR port map (CLOCK_50, rstc, users, match, LEDR, LEDG, gameend);
-=======
-F1: FSM port map (KEY0, KEY3, KEY2, gameend, timeend, CLOCK50, users, fire, rstc, rstt);
-T1: TIMER port map (CLOCK50, SW(17 downto 16), rstt, timeend, HEX0, HEX1);
-C1: CONTADOR port map (CLOCK50, rstc, users, match, LEDR, LEDG, gameend);
->>>>>>> 5c9e406b51cd9aed3682791923e6c2c9e83bf53c
 C2: TOPO_COMPARADOR port map (users, SW(15 downto 0), fire, match);
 
 HEX3 <= "1000111";
