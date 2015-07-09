@@ -1,3 +1,7 @@
+-- Evandro Chagas Ribeiro da Rosa (15100732)
+-- Lucas Calvalcante de Sousa (15100751)
+-- 1208A
+
 library IEEE;	
 use IEEE.std_logic_1164.all;
 	
